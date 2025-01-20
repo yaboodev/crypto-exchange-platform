@@ -19,7 +19,7 @@ interface IFormProps {
 
 const SigninScreen: React.FC = () => {
   const navigate = useNavigate();
-  const { onlyNumbers } = useFormEvents();
+  useFormEvents();
 
   const [formValues, setFormValues] = useState<IFormProps>({
     phone: '',
@@ -62,6 +62,12 @@ const SigninScreen: React.FC = () => {
               <div>
                 <div className='form-logo center'>
                   <img
+                    style={{
+                      borderRadius: '50%',
+                      width: '100px',
+                      height: '100px',
+                      objectFit: 'cover',
+                    }}
                     draggable='false'
                     alt='Crypto Exchange'
                     src={`${process.env.PUBLIC_URL}/images/logo.png`}
@@ -69,8 +75,7 @@ const SigninScreen: React.FC = () => {
                 </div>
                 <h1 className='form-title center'>Members Login</h1>
                 <p className='form-desc center'>
-                  Hello{' '}
-                  <strong>Welcome</strong> 
+                  Hello <strong>Welcome</strong>
                 </p>
                 <form className='form' onSubmit={handleSubmit} noValidate>
                   <div className='form-elements'>
@@ -80,7 +85,6 @@ const SigninScreen: React.FC = () => {
                         <FormInput
                           type='email'
                           name='email'
-                          
                           onChange={handleChange}
                           value={formValues.phone}
                           placeholder='Enter your email'
@@ -112,7 +116,7 @@ const SigninScreen: React.FC = () => {
                     <div className='form-line'>
                       <div className='center'>
                         <p>
-                          Don't have an account <Link to='/members/signup'>Signup</Link> 
+                          Don't have an account <Link to='/members/signup'>Signup</Link>
                         </p>
                       </div>
                     </div>

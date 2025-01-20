@@ -26,7 +26,7 @@ const Profile: React.FC = () => {
     <Box>
       <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
         <div ref={ref} className='flex flex-center flex-space-between'>
-          <p>Profilim</p>
+          <p>Profile</p>
           <button type='button' className='box-icon pointer' onClick={() => handleMenuOpen()}>
             <i className='material-icons'>more_vert</i>
           </button>
@@ -76,7 +76,7 @@ const Profile: React.FC = () => {
         </div>
         <div className='box-horizontal-padding'>
           <div className='center'>
-            <h3>Cenk SARI</h3>
+            <h3>User</h3>
             <strong>Seviye 1</strong>
             <p>Limitlerinizi arttırmak için seviye 2 olmalısınız.</p>
             <Link to='/members/application'>Seviye 2 başvuru</Link>

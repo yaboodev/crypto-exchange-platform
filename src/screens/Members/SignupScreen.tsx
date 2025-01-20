@@ -105,6 +105,12 @@ const SignupScreen: React.FC = () => {
               <div>
                 <div className='form-logo center'>
                   <img
+                    style={{
+                      borderRadius: '50%',
+                      width: '100px',
+                      height: '100px',
+                      objectFit: 'cover',
+                    }}
                     draggable='false'
                     alt='Crypto Exchange'
                     src={`${process.env.PUBLIC_URL}/images/logo.png`}
@@ -112,7 +118,8 @@ const SignupScreen: React.FC = () => {
                 </div>
                 <h1 className='form-title center'>Create an account</h1>
                 <p className='form-desc center'>
-                Please enter the information below. We will send your activation information to your phone number.
+                  Please enter the information below. We will send your activation information to
+                  your phone number.
                 </p>
                 <form className='form' onSubmit={handleSubmit} noValidate>
                   <div className='form-elements'>
@@ -294,7 +301,7 @@ const SignupScreen: React.FC = () => {
                     <div className='form-line'>
                       <div className='center'>
                         <p>
-                        Do you have an account? <Link to='/'>Log in</Link>.
+                          Do you have an account? <Link to='/'>Log in</Link>.
                         </p>
                       </div>
                     </div>

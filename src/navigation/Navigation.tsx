@@ -1,6 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-
-// pages                                                                                              
+// pages
 import MarketScreen from '../screens/Market/MarketScreen';
 import SigninScreen from '../screens/Members/SigninScreen';
 import SignupScreen from '../screens/Members/SignupScreen';
