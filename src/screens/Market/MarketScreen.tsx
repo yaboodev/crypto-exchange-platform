@@ -11,25 +11,11 @@ import TradeHistory from '../../components/Widgets/TradeHistory/TradeHistory';
 import CoinVertical from '../../components/Widgets/Coin/CoinVertical';
 import CoinHorizontal from '../../components/Widgets/Coin/CoinHorizontal';
 import CandleStick from '../../components/Widgets/CandleStick/CandleStick';
-
-// interfaces
-interface ICrypto {
-  id: number;
-  name: string;
-  icon: string;
-  symbol: string;
-  weight: string;
-  amount: string;
-  change: string;
-  currency: string;
-  exchange: string;
-  description: string;
-  financialRate: string;
-}
+import { ICrypto } from './types';
 
 // variables
 const coinData: ICrypto = {
-  id: 1,
+  id: '1',
   name: 'Bitcoin',
   symbol: 'BTC',
   change: '-%3.28',
@@ -40,6 +26,9 @@ const coinData: ICrypto = {
   icon: 'https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/256/Bitcoin-BTC-icon.png',
   amount: '18.783,33',
   description: `Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group using the name Satoshi Nakamoto. It was released as open source software in 2009.`,
+  lineChartData: [],
+  status: 0,
+  date: '',
 };
 
 const MarketScreen: React.FC = () => {
@@ -47,7 +36,7 @@ const MarketScreen: React.FC = () => {
   const [coinInfo, setCoinInfo] = useState<ICrypto | null>(null);
 
   useEffect(() => {
-    setCoinInfo(coinData);
+    setCoinInfo(coinData); // Initial coin info
   }, []);
 
   /**
@@ -58,7 +47,6 @@ const MarketScreen: React.FC = () => {
    */
   const handleSearchValue = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { value } = e.target;
-
     setKeyword(value);
   };
 
@@ -72,14 +60,24 @@ const MarketScreen: React.FC = () => {
     e.preventDefault();
   };
 
+  // Function to handle coin click and update selected coin data
+  const handleCoinClick = (coin: ICrypto) => {
+    setCoinInfo(coin);
+  };
+
   return (
     <MainLayout>
       <div className='content'>
         <Header title='Market' />
         <div className='flex flex-destroy'>
           <div className='content-30 box-right-padding'>
-            <Market />
-
+            {/* Pass handleCoinSelect as a prop to Market */}
+            <Market
+              onCoinSelect={handleCoinClick}
+              onClick={function (): void {
+                throw new Error('Function not implemented.');
+              }}
+            />
             {coinInfo && <CoinVertical item={coinInfo} />}
           </div>
           <div className='content-70 flex-1'>

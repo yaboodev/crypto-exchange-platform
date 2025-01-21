@@ -1,9 +1,10 @@
 // components
+import { ICrypto } from '../../../screens/Market/types';
 import Box from '../../Common/Box';
 
 // interfaces
 interface IProps {
-  item: any;
+  item: ICrypto;
   searchValue: string;
   searchSubmit: (e: React.FormEvent) => void;
   searchOnChange: (e: React.ChangeEvent<HTMLInputElement>) => void;

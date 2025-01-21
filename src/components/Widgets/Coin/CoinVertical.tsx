@@ -5,10 +5,11 @@ import useClickOutside from '../../../hooks/useClickOutside';
 
 // components
 import Box from '../../Common/Box';
+import { ICrypto } from '../../../screens/Market/types';
 
 // interfaces
 interface IProps {
-  item: any;
+  item: ICrypto;
 }
 
 const CoinVertical: React.FC<IProps> = ({ item }) => {

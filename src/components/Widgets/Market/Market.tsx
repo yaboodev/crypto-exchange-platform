@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import Box from '../../Common/Box';
 import MarketRow from './MarketRow';
+import { ICrypto } from '../../../screens/Market/types';
 
-interface ICrypto {
-  id: string;
-  name: string;
-  icon: string;
-  amount: string;
-  currency: string;
-  change: string;
-  lineChartData: number[]; // Placeholder for chart data.
+interface IProps {
+  onCoinSelect: (coin: ICrypto) => void;
+  onClick: () => void;
 }
 
-const Market: React.FC = () => {
+const Market: React.FC<IProps> = ({ onCoinSelect }) => {
   const [data, setData] = useState<ICrypto[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchMarketData = async () => {
@@ -26,17 +21,26 @@ const Market: React.FC = () => {
 
         const formattedData: ICrypto[] = result.map((item: any) => ({
           id: item.id,
-          name: `${item.symbol.toUpperCase()}/USD`, // Symbol with currency.
-          icon: item.image, // Icon URL.
-          amount: item.current_price.toFixed(2), // Current price.
-          currency: 'USD', // Static USD currency.
-          change: `${item.price_change_percentage_24h?.toFixed(2) || 0}%`, // 24h change.
-          lineChartData: [], // Placeholder for chart data.
+          name: `${item.symbol.toUpperCase()}/USD`,
+          icon: item.image,
+          amount: item.current_price.toFixed(2),
+          currency: 'USD',
+          change: `${item.price_change_percentage_24h?.toFixed(2) || 0}%`,
+          status: item.price_change_percentage_24h > 0 ? 1 : 0,
+          lineChartData: item.sparkline_in_7d?.price || [],
+          symbol: item.symbol.toUpperCase(),
+          date: new Date().toLocaleDateString(),
+          weight: 'N/A', // Placeholder
+          exchange: `${item.symbol.toUpperCase()}/USD`, // Placeholder
+          financialRate: '0.00%/hr', // Placeholder
+          description: 'No description available.', // Placeholder
         }));
 
         setData(formattedData);
       } catch (error) {
         console.error('Error fetching market data:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -44,22 +48,17 @@ const Market: React.FC = () => {
   }, []);
 
   return (
-    <Box>
-      <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-        Piyasalar
-      </div>
-      <div className='box-content box-content-height'>
-        {data.length > 0
-          ? data.map((item) => <MarketRow key={item.id} item={item} />)
-          : 'Loading...'}
-      </div>
-      <div className='box-button box-vertical-padding box-horizontal-padding'>
-        <Link to='/capital' className='button button-purple button-medium button-block'>
-          More
-          <i className='material-icons button-icon-right'>chevron_right</i>
-        </Link>
-      </div>
-    </Box>
+    <div className='market'>
+      {loading ? (
+        <div className='loader'>Loading data...</div>
+      ) : data.length > 0 ? (
+        data.map((item) => (
+          <MarketRow key={item.id} item={item} onClick={() => onCoinSelect(item)} />
+        ))
+      ) : (
+        <div>No data available</div>
+      )}
+    </div>
   );
 };
 

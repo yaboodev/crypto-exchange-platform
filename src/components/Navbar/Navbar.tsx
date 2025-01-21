@@ -40,7 +40,7 @@ const Navbar: React.FC = () => {
   };
 
   const menuHeadingStyles = {
-    fontSize: '18px',
+    fontSize: '24px',
     marginBottom: '10px',
   };
 

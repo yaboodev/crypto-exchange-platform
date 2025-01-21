@@ -19,28 +19,29 @@ const DashboardScreen: React.FC = () => {
   return (
   <SiteLayout>
     {/* Pass the toggle handler to Header */}
-    <Header icon="menu" title="Deposit and withdraw" onMenuClick={handleMenuToggle} />
 
 {/* Render the mobile menu conditionally */}
-    <Header icon='sort' title='Deposit and withdraw' />
-    <div className='flex flex-destroy flex-space-between'>
+      <Header icon='sort' title='Deposit and withdraw' />
+      <div className='flex flex-destroy flex-space-between'>
       <div className='flex-1 box-right-padding'>
-        <BankProcess />
-      </div>
+          <BankProcess />
+        </div>
       <div className='flex-1'>
         <Box>
           <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-            <div className='flex flex-center flex-space-between'>
+              <div className='flex flex-center flex-space-between'>
               <p>Important</p>
             </div>
           </div>
-          <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
+            <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
             <p>
-              &bull; In EFT transfers, Crypto Exchange must be 
-              written in the recipient/beneficiary section.
+                &bull; In EFT transfers, Crypto Exchange must be written in the
+                recipient/beneficiary section.
             </p>
             <p>
-              &bull; You can make a Wire Transfer/EFT transaction to the listed accounts from all your individual, current, Turkish Lira accounts opened in your name. Transfers made from accounts belonging to different persons will not be accepted.
+                &bull; You can make a Wire Transfer/EFT transaction to the listed accounts from all
+                your individual, current, Turkish Lira accounts opened in your name. Transfers made
+                from accounts belonging to different persons will not be accepted.
             </p>
             <p>
               &bull; Transfers made using an ATM (with or without a card) will not be accepted as it is not possible to confirm the sender information.
@@ -80,7 +81,7 @@ const DashboardScreen: React.FC = () => {
             </p>
             <p>
               &bull; Withdrawal instructions given outside of banks' working hours are processed as soon as the banks start working..
-            </p>
+              </p>
           </div>
         </Box>
       </div>

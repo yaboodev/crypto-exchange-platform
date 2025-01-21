@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+   import { useState, useEffect } from 'react';
 
 // components
 import SiteLayout from '../../layouts/SiteLayout';
@@ -52,13 +52,14 @@ const CapitalScreen: React.FC = () => {
    */
   const handleSearchSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    
+
     // Filter the data based on the keyword
-    const filteredData = dataArray.filter(item =>
-      item.name.toLowerCase().includes(keyword.toLowerCase()) || 
-      item.symbol.toLowerCase().includes(keyword.toLowerCase())
+    const filteredData = dataArray.filter(
+      (item) =>
+        item.name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.symbol.toLowerCase().includes(keyword.toLowerCase())
     );
-    setData(filteredData);  // Update the data state with filtered data
+    setData(filteredData); // Update the data state with filtered data
   };
 
   return (
