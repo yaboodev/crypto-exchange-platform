@@ -62,7 +62,6 @@ const Navbar: React.FC = () => {
     marginTop: '20px',
   };
 
-  const menuHeading = <h3 style={menuHeadingStyles}>Menu</h3>;
   const othersHeading = <h3 style={menuHeadingStyles}>Others</h3>;
 
   return (
@@ -83,7 +82,7 @@ const Navbar: React.FC = () => {
 
       {/* Menu */}
       <div className='navbar-menu' style={navbarMenuStyles}>
-        {menuHeading}
+        {!isMobile && <h3 style={menuHeadingStyles}>Menu</h3>}
         <ul style={navbarButtonListStyles}>
           <li>
             <NavbarButton url='/dashboard' icon='dashboard' title='Withdraw-Deposit' />

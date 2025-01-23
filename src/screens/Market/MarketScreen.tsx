@@ -72,12 +72,7 @@ const MarketScreen: React.FC = () => {
         <div className='flex flex-destroy'>
           <div className='content-30 box-right-padding'>
             {/* Pass handleCoinSelect as a prop to Market */}
-            <Market
-              onCoinSelect={handleCoinClick}
-              onClick={function (): void {
-                throw new Error('Function not implemented.');
-              }}
-            />
+            <Market onCoinSelect={handleCoinClick} />
             {coinInfo && <CoinVertical item={coinInfo} />}
           </div>
           <div className='content-70 flex-1'>

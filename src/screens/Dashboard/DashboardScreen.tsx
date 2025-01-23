@@ -1,5 +1,5 @@
 // components
-import React, { useState } from 'react'; // Add useState
+// import React, { useState } from 'react'; // Add useState
 import Box from '../../components/Common/Box';
 import SiteLayout from '../../layouts/SiteLayout';
 import Header from '../../components/Header/Header';
@@ -8,86 +8,92 @@ import RecentActivity from '../../components/Widgets/RecentActivity/RecentActivi
 
 const DashboardScreen: React.FC = () => {
   // State for toggling the mobile menu
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // Function to handle menu toggle
-  const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
-  
-  
+  // // Function to handle menu toggle
+  // const handleMenuToggle = () => {
+  //   setIsMenuOpen(!isMenuOpen);
+  // };
+
   return (
-  <SiteLayout>
-    {/* Pass the toggle handler to Header */}
+    <SiteLayout>
+      {/* Pass the toggle handler to Header */}
 
-{/* Render the mobile menu conditionally */}
+      {/* Render the mobile menu conditionally */}
       <Header icon='sort' title='Deposit and withdraw' />
       <div className='flex flex-destroy flex-space-between'>
-      <div className='flex-1 box-right-padding'>
+        <div className='flex-1 box-right-padding'>
           <BankProcess />
         </div>
-      <div className='flex-1'>
-        <Box>
-          <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
+        <div className='flex-1'>
+          <Box>
+            <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
               <div className='flex flex-center flex-space-between'>
-              <p>Important</p>
+                <p>Important</p>
+              </div>
             </div>
-          </div>
             <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
-            <p>
+              <p>
                 &bull; In EFT transfers, Crypto Exchange must be written in the
                 recipient/beneficiary section.
-            </p>
-            <p>
+              </p>
+              <p>
                 &bull; You can make a Wire Transfer/EFT transaction to the listed accounts from all
                 your individual, current, Turkish Lira accounts opened in your name. Transfers made
                 from accounts belonging to different persons will not be accepted.
-            </p>
-            <p>
-              &bull; Transfers made using an ATM (with or without a card) will not be accepted as it is not possible to confirm the sender information.
-            </p>
-            <p>
-              &bull; The amount you send will be automatically reflected in your account by the system after the checks, you do not need to make a separate notification.
-            </p>
-            <p>
-              &bull; Since you have completed your identity verification process, you do not need to enter a fixed deposit code in the description section.
-            </p>
-          </div>
-        </Box>
-      </div>
-    </div>
-    <div className='flex flex-destroy flex-space-between'>
-      <div className='flex-1 box-right-padding'>
-        <RecentActivity />
-      </div>
-      <div className='flex-1'>
-        <Box>
-          <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-            <div className='flex flex-center flex-space-between'>
-              <p>Important</p>
-            </div>
-          </div>
-          <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
-            <p>
-              &bull; You can withdraw to all bank accounts opened in your name (individual, current, TL). Your transfer will not be made to a different person.
-            </p>
-            <p>&bull; Minimum withdrawal amount is 10 TL&apos;dir.</p>
-            <p>&bull; A 3 TL transaction fee will be charged during the withdrawal process..</p>
-            <p>
-              &bull;When you place a withdrawal order, this amount will be deducted from your available balance.
-            </p>
-            <p>
-              &bull; You can cancel orders that have not yet been executed. In this case, the order amount will be transferred to your available balance again.
-            </p>
-            <p>
-              &bull; Withdrawal instructions given outside of banks' working hours are processed as soon as the banks start working..
               </p>
-          </div>
-        </Box>
+              <p>
+                &bull; Transfers made using an ATM (with or without a card) will not be accepted as
+                it is not possible to confirm the sender information.
+              </p>
+              <p>
+                &bull; The amount you send will be automatically reflected in your account by the
+                system after the checks, you do not need to make a separate notification.
+              </p>
+              <p>
+                &bull; Since you have completed your identity verification process, you do not need
+                to enter a fixed deposit code in the description section.
+              </p>
+            </div>
+          </Box>
+        </div>
       </div>
-    </div>
-  </SiteLayout>
-);
-}
+      <div className='flex flex-destroy flex-space-between'>
+        <div className='flex-1 box-right-padding'>
+          <RecentActivity />
+        </div>
+        <div className='flex-1'>
+          <Box>
+            <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
+              <div className='flex flex-center flex-space-between'>
+                <p>Important</p>
+              </div>
+            </div>
+            <div className='box-content box-text box-horizontal-padding box-content-height-nobutton'>
+              <p>
+                &bull; You can withdraw to all bank accounts opened in your name (individual,
+                current, TL). Your transfer will not be made to a different person.
+              </p>
+              <p>&bull; Minimum withdrawal amount is 10 TL&apos;dir.</p>
+              <p>&bull; A 3 TL transaction fee will be charged during the withdrawal process..</p>
+              <p>
+                &bull;When you place a withdrawal order, this amount will be deducted from your
+                available balance.
+              </p>
+              <p>
+                &bull; You can cancel orders that have not yet been executed. In this case, the
+                order amount will be transferred to your available balance again.
+              </p>
+              <p>
+                &bull; Withdrawal instructions given outside of banks' working hours are processed
+                as soon as the banks start working..
+              </p>
+            </div>
+          </Box>
+        </div>
+      </div>
+    </SiteLayout>
+  );
+};
 
 export default DashboardScreen;

@@ -1,14 +1,11 @@
-// components
 import React, { useState, useEffect } from 'react';
 import HeaderLeft from './HeaderLeft';
 import HeaderRight from './HeaderRight';
 import Navbar from '../Navbar/Navbar';
 
-// interfaces
 interface IProps {
   icon?: string;
   title: string;
-  onMenuClick?: () => void;
 }
 
 const Header: React.FC<IProps> = ({ icon, title }) => {
@@ -37,24 +34,27 @@ const Header: React.FC<IProps> = ({ icon, title }) => {
   };
 
   return (
-    <header className='flex flex-center flex-space-between'>
-      <HeaderLeft icon={icon} title={title} onMenuClick={handleMenuClick} />
-      <HeaderRight />
+    <header className='flex justify-between items-center p-4 bg-white shadow-md relative'>
+      {/* Left Section */}
+      <div className='relative'>
+        <HeaderLeft icon={icon} title={title} onMenuClick={handleMenuClick} />
+        {/* Mobile Navbar under left header */}
+        {isNavbarVisible && (
+          <div className='absolute top-full left-0 w-64 bg-white shadow-lg border border-gray-200 z-50'>
+            <Navbar />
+            <button
+              type='button'
+              className='block w-full text-center text-white bg-red-500 py-2 mt-2 hover:bg-red-600'
+              onClick={() => setNavbarVisible(false)}
+            >
+              Close
+            </button>
+          </div>
+        )}
+      </div>
 
-      {/* Conditionally render Navbar */}
-      {isNavbarVisible && (
-        <div className='mobile-navbar-overlay'>
-          <Navbar />
-          {/* Close button */}
-          <button
-            type='button'
-            className='close-navbar-btn'
-            onClick={() => setNavbarVisible(false)}
-          >
-            Close
-          </button>
-        </div>
-      )}
+      {/* Right Section */}
+      <HeaderRight />
     </header>
   );
 };

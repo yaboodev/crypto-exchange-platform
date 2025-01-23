@@ -4,7 +4,6 @@ import { ICrypto } from '../../../screens/Market/types';
 
 interface IProps {
   onCoinSelect: (coin: ICrypto) => void;
-  onClick: () => void;
 }
 
 const Market: React.FC<IProps> = ({ onCoinSelect }) => {
@@ -30,10 +29,10 @@ const Market: React.FC<IProps> = ({ onCoinSelect }) => {
           lineChartData: item.sparkline_in_7d?.price || [],
           symbol: item.symbol.toUpperCase(),
           date: new Date().toLocaleDateString(),
-          weight: 'N/A', // Placeholder
-          exchange: `${item.symbol.toUpperCase()}/USD`, // Placeholder
-          financialRate: '0.00%/hr', // Placeholder
-          description: 'No description available.', // Placeholder
+          weight: 'N/A',
+          exchange: `${item.symbol.toUpperCase()}/USD`,
+          financialRate: '0.00%/hr',
+          description: 'No description available.',
         }));
 
         setData(formattedData);
