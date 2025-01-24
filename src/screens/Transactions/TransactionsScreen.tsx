@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-
 // components
 import SiteLayout from '../../layouts/SiteLayout';
 import Header from '../../components/Header/Header';
@@ -62,6 +61,19 @@ const dataArray: ITransaction[] = [
     amount: '158',
     status: 3,
   },
+  {
+    id: 4,
+    type: 1,
+    transaction: '24153459987415',
+    date: '4/5/2020 13:42:01',
+    from: 'Cenk',
+    to: 'Tarık',
+    toPicture: '',
+    coin: 'Tether',
+    icon: 'https://icons.iconarchive.com/icons/cjdowner/cryptocurrency-flat/1024/Tether-USDT-icon.png',
+    amount: '158',
+    status: 3,
+  },
 ];
 
 const TransactionsScreen: React.FC = () => {
@@ -96,7 +108,7 @@ const TransactionsScreen: React.FC = () => {
 
   return (
     <SiteLayout>
-      <Header icon='sort' title='İşlemler' />
+      <Header icon='sort' title='User' />
       <TopBar
         searchValue={keyword}
         searchSubmit={handleSearchSubmit}

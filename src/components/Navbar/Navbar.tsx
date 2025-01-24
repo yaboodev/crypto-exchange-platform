@@ -94,7 +94,7 @@ const Navbar: React.FC = () => {
             <NavbarButton url='/transactions' icon='sync' title='Transaction' />
           </li>
           <li>
-            <NavbarButton url='/trading' icon='paid' title='Trade' />
+            <NavbarButton url='/trade' icon='paid' title='Trade' />
           </li>
           <li>
             <NavbarButton url='/exchange' icon='account_balance' title='Trail' />

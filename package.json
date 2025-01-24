@@ -2,6 +2,7 @@
   "name": "react-crypto-exchange",
   "version": "0.1.10",
   "private": true,
+  "homepage": "https://cryptoexchange.etoure.com/app",
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-keywords": "^5.1.0",

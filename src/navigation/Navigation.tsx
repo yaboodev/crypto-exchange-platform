@@ -8,10 +8,12 @@ import ProfileScreen from '../screens/Members/ProfileScreen';
 import CapitalScreen from '../screens/Capital/CapitalScreen';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
+import TradeScreen from '../screens/Trade/TradeScreen';
 
 const Navigation: React.FC = () => (
   <Routes>
     <Route path='/' element={<SigninScreen />} />
+    <Route path='/trade' element={<TradeScreen />} />
     <Route path='/market' element={<MarketScreen />} />
     <Route path='/members' element={<ProfileScreen />} />
     <Route path='/capital' element={<CapitalScreen />} />

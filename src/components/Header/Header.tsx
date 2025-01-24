@@ -34,7 +34,7 @@ const Header: React.FC<IProps> = ({ icon, title }) => {
   };
 
   return (
-    <header className='flex justify-between items-center p-4 bg-white shadow-md relative'>
+    <header className='flex'>
       {/* Left Section */}
       <div className='relative'>
         <HeaderLeft icon={icon} title={title} onMenuClick={handleMenuClick} />
