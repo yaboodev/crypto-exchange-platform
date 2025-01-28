@@ -15,7 +15,7 @@ interface ICryptoData {
   price_change_percentage_24h: number;
 }
 
-const TradeScreen: React.FC = () => {
+const WalletScreen: React.FC = () => {
   const [data, setData] = useState<ICryptoData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -50,6 +50,11 @@ const TradeScreen: React.FC = () => {
   return (
     <SiteLayout>
       <Header icon='sort' title='User' />
+      <div className='flex justify-between items-center mb-4'>
+        <h2 className='text-xl'>Total Balance</h2>
+        <h3 className='text-3xl'>$0</h3>
+        <button className='bg-blue-600 px-4 py-2 rounded'>Receive</button>
+      </div>
       {data && data.length > 0 && (
         <table className='data-table mt-10'>
           <thead>
@@ -73,4 +78,4 @@ const TradeScreen: React.FC = () => {
   );
 };
 
-export default TradeScreen;
+export default WalletScreen;

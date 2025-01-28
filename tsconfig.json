@@ -25,6 +25,6 @@
     ".prettierrc.mjs",
     "declaration.d.ts",
     "eslint.config.mjs"
-  ],
+, "tailwind.config.js"  ],
   "exclude": ["node_modules"]
 }

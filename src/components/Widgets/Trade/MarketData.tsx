@@ -1,25 +1,32 @@
-// components
-import Amount from '../../Tables/Transactions/Amount';
+interface ICryptoData {
+  id: string;
+  name: string;
+  symbol: string;
+  image: string;
+  current_price: number;
+  market_cap: number;
+  total_volume: number;
+  price_change_percentage_24h: number;
+}
 
-// interfaces
 interface IProps {
-  item: any;
+  item: ICryptoData;
 }
 
 const MarketData: React.FC<IProps> = ({ item }) => (
   <tr>
     <td className='center'>
-      <div className='icon cover' style={{ backgroundImage: `url('${item.icon}')` }} />
-      <strong>{item.coin}</strong>
+      <div className='icon cover' style={{ backgroundImage: `url('${item.image}')` }} />
+      <strong>{item.name}</strong>
     </td>
-    <td className='center'>{item.transaction}</td>
-    <td className='center'>{item.to}</td>
-    <td className='center'>{item.date}</td>
-    <td aria-label='amount' className='center'>
-      <Amount type={item.type} amount={item.amount} />
+    <td className='center'>${item.current_price.toFixed(2)}</td>
+    <td className={`center ${item.price_change_percentage_24h >= 0 ? 'positive' : 'negative'}`}>
+      {item.price_change_percentage_24h.toFixed(2)}%
     </td>
-    <td aria-label='status' className='center'>
-      <button>Trade</button>
+    <td className='center'>${item.total_volume.toLocaleString()}</td>
+    <td className='center'>${item.market_cap.toLocaleString()}</td>
+    <td className='center'>
+      <button className='trade-button'>Trade</button>
     </td>
   </tr>
 );

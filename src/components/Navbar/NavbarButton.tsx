@@ -13,10 +13,13 @@ const NavbarButton: React.FC<IProps> = ({ url, icon, title }) => {
   return (
     <Link
       to={url}
-      className={location.pathname.toLowerCase().includes(url) ? 'active nowrap' : 'passive nowrap'}
+      className={`flex items-center space-x-4 py-4 px-6 w-full text-lg rounded-md transition-all duration-300 
+        ${location.pathname.toLowerCase().includes(url) ? 'bg-blue-500 text-white' : 'text-gray-700 hover:bg-gray-100'} 
+        ${location.pathname.toLowerCase().includes(url) ? 'font-semibold' : ''} 
+        flex-col sm:flex-row`} // Flex layout changes for mobile and desktop
     >
-      <i className='material-icons'>{icon}</i>
-      <span>{title}</span>
+      <i className='material-icons text-2xl'>{icon}</i> {/* Larger icons */}
+      <span className='text-lg'>{title}</span> {/* Larger text */}
     </Link>
   );
 };
