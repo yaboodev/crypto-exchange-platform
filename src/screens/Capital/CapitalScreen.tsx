@@ -64,7 +64,7 @@ const CapitalScreen: React.FC = () => {
 
   return (
     <SiteLayout>
-      <Header icon='sort' title='Piyasa' />
+      <Header icon='sort' title='New markets Coming soon' />
       <TopBar
         searchValue={keyword}
         searchSubmit={handleSearchSubmit}

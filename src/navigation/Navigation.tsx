@@ -10,6 +10,7 @@ import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
 import TradeScreen from '../screens/Trade/TradeScreen';
 import DataScreen from '../screens/Data/DataScreen';
+import Wallet from '../screens/Wallet/Wallet';
 import WalletScreen from '../screens/Wallet/WalletScreen';
 import Trade from '../screens/Trade/Trade';
 import DocumentationScreen from '../screens/Documentation/DocumentationScreen';
@@ -25,10 +26,10 @@ const Navigation: React.FC = () => (
     <Route path='/members/notifications' element={<NotificationScreen />} />
     <Route path='/trade' element={<TradeScreen />} />
     <Route path='/api' element={<APIScreen />} />
-    <Route path='/wallet' element={<WalletScreen />} />
-    <Route path='/market' element={<MarketScreen />} />
-    <Route path='/members' element={<ProfileScreen />} />
-    <Route path='/capital' element={<CapitalScreen />} />
+    <Route path='/trade' element={<TradeScreen />} />
+    <Route path='/api' element={<APIScreen />} />
+    <Route path='/wallet' element={<Wallet />} />
+    <Route path='/walletScreen' element={<WalletScreen />} />
     <Route path='/dashboard' element={<DashboardScreen />} />
     <Route path='/members/signup' element={<SignupScreen />} />
     <Route path='/transactions' element={<TransactionsScreen />} />

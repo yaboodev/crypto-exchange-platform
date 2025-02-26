@@ -23,7 +23,7 @@ const Profile: React.FC = () => {
   return (
     <Box>
       <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
-        <div ref={ref} className='flex flex-center flex-space-between'>
+        {/* <div ref={ref} className='flex flex-center flex-space-between'>
           <p>Profile</p>
           <button type='button' className='box-icon pointer' onClick={() => handleMenuOpen()}>
             <i className='material-icons'>more_vert</i>
@@ -53,7 +53,7 @@ const Profile: React.FC = () => {
               </ul>
             </div>
           )}
-        </div>
+        </div> */}
       </div>
       <div className='widget-profile box-content box-content-height-nobutton'>
         <div className='center'>
