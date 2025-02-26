@@ -22,6 +22,8 @@ const Navigation: React.FC = () => (
     <Route path='/' element={<SigninScreen />} />
     <Route path='/trades/:coinId' element={<Trade />} />
     <Route path='/data' element={<DataScreen />} />
+    <Route path='/market' element={<MarketScreen />} />
+    <Route path='/capital' element={<CapitalScreen />} />
     <Route path='/docs' element={<DocumentationScreen />} />
     <Route path='/members/notifications' element={<NotificationScreen />} />
     <Route path='/trade' element={<TradeScreen />} />
@@ -30,6 +32,7 @@ const Navigation: React.FC = () => (
     <Route path='/api' element={<APIScreen />} />
     <Route path='/wallet' element={<Wallet />} />
     <Route path='/walletScreen' element={<WalletScreen />} />
+    <Route path='/members' element={<ProfileScreen />} />
     <Route path='/dashboard' element={<DashboardScreen />} />
     <Route path='/members/signup' element={<SignupScreen />} />
     <Route path='/transactions' element={<TransactionsScreen />} />
