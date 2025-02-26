@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header';
 import BankProcess from '../../components/Widgets/BankProcess/BankProcess';
 import RecentActivity from '../../components/Widgets/RecentActivity/RecentActivity';
 
-
 const DashboardScreen: React.FC = () => {
   // State for file upload and messages
   const [file, setFile] = useState<File | null>(null);
@@ -30,43 +29,40 @@ const DashboardScreen: React.FC = () => {
   return (
     <SiteLayout>
       {/* Pass the toggle handler to Header */}
-      <Header icon="sort" title="Deposit and Withdraw" />
+      <Header icon='sort' title='Deposit and Withdraw' />
 
-      <div className="flex flex-destroy flex-space-between">
-        <div className="flex-1 box-right-padding">
+      <div className='flex flex-destroy flex-space-between'>
+        <div className='flex-1 box-right-padding'>
           <BankProcess />
         </div>
-        
       </div>
       <Box>
-
         <div>
-          
-        <div className="flex flex-destroy flex-space-between">
-        <div className="flex-1 box-right-padding">
-          <label>Upload certificate</label>
-          <input type="file" id="file-input" onChange={handleFileChange} />
+          <div className='flex flex-destroy flex-space-between'>
+            <div className='flex-1 box-right-padding'>
+              <label>Upload certificate</label>
+              <input type='file' id='file-input' onChange={handleFileChange} />
+            </div>
+
+            <p className='additional-info'>
+              Important hint: Ensure safety and security in your transactions.
+            </p>
+
+            <button className='button' onClick={handleConfirmClick}>
+              Confirm
+            </button>
+
+            {message && <p className='message'>{message}</p>}
+          </div>
         </div>
-
-        <p className="additional-info">
-          Important hint: Ensure safety and security in your transactions.
-        </p>
-
-        <button className="button" onClick={handleConfirmClick}>Confirm</button>
-
-        {message && <p className="message">{message}</p>}
-        </div>
-        
-      </div>
-        </Box>
-      
+      </Box>
 
       {/* Uncommented Sections */}
       {/* <div className='flex flex-destroy flex-space-between'> */}
-        {/* <div className='flex-1 box-right-padding'>
+      {/* <div className='flex-1 box-right-padding'>
           <RecentActivity />
         </div> */}
-        {/* <div className='flex-1'>
+      {/* <div className='flex-1'>
           <Box>
             <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
               <div className='flex flex-center flex-space-between'>
@@ -101,10 +97,10 @@ const DashboardScreen: React.FC = () => {
       {/* </div> */}
 
       {/* <div className='flex flex-destroy flex-space-between'> */}
-        {/* <div className='flex-1 box-right-padding'>
+      {/* <div className='flex-1 box-right-padding'>
           <RecentActivity />
         </div> */}
-        {/* <div className='flex-1'>
+      {/* <div className='flex-1'>
           <Box>
             <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
               <div className='flex flex-center flex-space-between'>

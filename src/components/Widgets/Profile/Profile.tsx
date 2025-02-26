@@ -1,7 +1,5 @@
 import { useRef, useState } from 'react';
 
-import { Link } from 'react-router-dom';
-
 // hooks
 import useClickOutside from '../../../hooks/useClickOutside';
 
@@ -37,19 +35,19 @@ const Profile: React.FC = () => {
                 <li>
                   <button type='button'>
                     <i className='material-icons'>settings</i>
-                    
+                    <span>settings</span>
                   </button>
                 </li>
                 <li>
                   <button type='button'>
                     <i className='material-icons'>favorite</i>
-                    
+                    <span>Favorites</span>
                   </button>
                 </li>
                 <li>
                   <button type='button'>
                     <i className='material-icons'>info</i>
-
+                    <span>Info</span>
                   </button>
                 </li>
               </ul>
@@ -64,9 +62,11 @@ const Profile: React.FC = () => {
             <label htmlFor='file'>
               <div
                 className='icon cover pointer'
-                style={{
-                  // backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
-                }}
+                style={
+                  {
+                    // backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
+                  }
+                }
               />
               {/* <div className='edit pointer'>
                 <i className='material-icons'>edit</i>

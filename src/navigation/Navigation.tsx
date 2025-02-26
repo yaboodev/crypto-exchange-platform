@@ -9,14 +9,22 @@ import CapitalScreen from '../screens/Capital/CapitalScreen';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
 import TradeScreen from '../screens/Trade/TradeScreen';
+import DataScreen from '../screens/Data/DataScreen';
 import WalletScreen from '../screens/Wallet/WalletScreen';
 import Trade from '../screens/Trade/Trade';
+import DocumentationScreen from '../screens/Documentation/DocumentationScreen';
+import NotificationScreen from '../screens/Members/NotificationScreen';
+import APIScreen from '../screens/API/APIScreen';
 
 const Navigation: React.FC = () => (
   <Routes>
     <Route path='/' element={<SigninScreen />} />
     <Route path='/trades/:coinId' element={<Trade />} />
+    <Route path='/data' element={<DataScreen />} />
+    <Route path='/docs' element={<DocumentationScreen />} />
+    <Route path='/members/notifications' element={<NotificationScreen />} />
     <Route path='/trade' element={<TradeScreen />} />
+    <Route path='/api' element={<APIScreen />} />
     <Route path='/wallet' element={<WalletScreen />} />
     <Route path='/market' element={<MarketScreen />} />
     <Route path='/members' element={<ProfileScreen />} />

@@ -68,7 +68,7 @@ const TradeScreen: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-           {data.map((item) => (
+            {data.map((item) => (
               <MarketData key={item.id} item={item} handleClick={() => handleClick(item.id)} />
             ))}
           </tbody>

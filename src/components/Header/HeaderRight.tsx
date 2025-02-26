@@ -48,7 +48,7 @@ const HeaderRight: React.FC = () => {
           </li>
           <li>
             <Link to='/members/notifications'>
-              <span className='notification-badge'>23</span>
+              <span className='notification-badge'>0</span>
               <i className='material-icons'>notifications</i>
             </Link>
           </li>
