@@ -7,7 +7,7 @@ const Wallet: React.FC = () => {
     <div className="container">
       <header className="header">
         <h1>Byte</h1>
-        <div className="subdomain">bybit.sunexex.com</div>
+        <div className="subdomain">Your Wallet</div>
       </header>
 
       <div className="tabs">
@@ -24,12 +24,12 @@ const Wallet: React.FC = () => {
           <div className="amount">0 <span className="equivalent">≈ 0 USD</span></div>
         </div>
         
-        <div className="actions">
+        {/* <div className="actions">
           <button className="action-btn">Deposit</button>
           <button className="action-btn">Withdrawal</button>
           <button className="action-btn">Financial</button>
           <button className="action-btn">Exchange</button>
-        </div>
+        </div> */}
       </div>
 
       <div className="divider" />
@@ -65,13 +65,13 @@ const Wallet: React.FC = () => {
         </div>
       </div>
 
-      <footer className="footer">
+      {/* <footer className="footer">
         <span className="footer-link">Home</span>
         <span className="footer-link">Trade</span>
         <span className="footer-link">Contract</span>
         <span className="footer-link">Financial</span>
         <span className="footer-link">Assets</span>
-      </footer>
+      </footer> */}
     </div>
   );
 };
