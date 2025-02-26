@@ -9,7 +9,7 @@ import CapitalScreen from '../screens/Capital/CapitalScreen';
 import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
 import TradeScreen from '../screens/Trade/TradeScreen';
-import WalletScreen from '../screens/Wallet/WalletScreen';
+import Wallet from '../screens/Wallet/Wallet';
 import Trade from '../screens/Trade/Trade';
 
 const Navigation: React.FC = () => (
@@ -17,7 +17,7 @@ const Navigation: React.FC = () => (
     <Route path='/' element={<SigninScreen />} />
     <Route path='/trades/:coinId' element={<Trade />} />
     <Route path='/trade' element={<TradeScreen />} />
-    <Route path='/wallet' element={<WalletScreen />} />
+    <Route path='/wallet' element={<Wallet />} />
     <Route path='/market' element={<MarketScreen />} />
     <Route path='/members' element={<ProfileScreen />} />
     <Route path='/capital' element={<CapitalScreen />} />

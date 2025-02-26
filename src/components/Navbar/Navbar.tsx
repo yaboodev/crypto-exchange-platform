@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
             <NavbarButton url='/dashboard' icon='dashboard' title='Withdraw-Deposit' />
           </li>
           <li>
-            <NavbarButton url='/wallet' icon='account_balance_wallet' title='My Wallet' />
+            <NavbarButton url='/wallet' icon='account_balance_wallet' title='Wallet' />
           </li>
           {/* <li>
             <NavbarButton url='/transactions' icon='sync' title='Transaction' />
@@ -106,7 +106,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* Others (visible only on desktop) */}
-      {!isMobile && (
+      {/* {!isMobile && (
         <div className='navbar-others' style={navbarOthersStyles}>
           {othersHeading}
           <ul style={navbarButtonListStyles}>
@@ -132,7 +132,7 @@ const Navbar: React.FC = () => {
             </p>
           </div>
         </div>
-      )}
+      )} */}
     </nav>
   );
 };

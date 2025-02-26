@@ -13,19 +13,17 @@ const ProfileScreen: React.FC = () => (
       <div className='content-30 box-right-padding'>
         <Profile />
       </div>
-      <div className='content-70 flex-1'>
-        <TradeScreen />
-      </div>
+      
     </div>
 
     {/* <div className='flex flex-space-between flex-destroy'>
       <div className='flex-1 box-right-padding'>
-        <RecentActivity />
-      </div>
-      <div className='flex-1'>
+        <TradeScreen />
+      </div> */}
+      {/* <div className='flex-1'>
         <Limits />
-      </div>
-    </div> */}
+      </div> */}
+    {/* </div> */}
   </SiteLayout>
 );
 

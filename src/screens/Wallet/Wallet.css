@@ -1,0 +1,197 @@
+/* App.css */
+:root {
+    --primary: hsl(230, 70%, 60%);
+    --primary-hover: hsl(230, 70%, 50%);
+    --background: hsl(240, 10%, 98%);
+    --surface: white;
+    --text: hsl(240, 10%, 20%);
+    --text-secondary: hsl(240, 5%, 45%);
+    --border: hsl(240, 10%, 90%);
+  }
+  
+  /* Base Styles */
+  .container {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0 auto;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 1rem;
+    background: var(--background);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .header h1 {
+    font-size: clamp(24px, 6vw, 28px);
+    margin: 0;
+    color: var(--text);
+  }
+  
+  .subdomain {
+    color: var(--text-secondary);
+    font-size: clamp(12px, 3vw, 14px);
+    margin-top: 4px;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    padding: 0 1rem;
+  }
+  
+  .tab {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: clamp(14px, 3.5vw, 16px);
+    color: var(--text-secondary);
+    transition: all 0.2s ease;
+    flex: 1;
+    text-align: center;
+  }
+  
+  .divider {
+    border-bottom: 1px solid var(--border);
+    margin: 1.5rem 0;
+  }
+  
+  .total-assets {
+    text-align: center;
+    padding: 1rem;
+    background: var(--surface);
+    border-radius: 12px;
+    margin: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  }
+  
+  .label {
+    color: var(--text-secondary);
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+  
+  .amount {
+    font-size: clamp(24px, 8vw, 32px);
+    font-weight: 600;
+    color: var(--text);
+  }
+  
+  .equivalent {
+    font-size: clamp(12px, 3vw, 14px);
+    color: var(--text-secondary);
+  }
+  
+  .actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.75rem;
+    margin: 1.5rem 1rem;
+  }
+  
+  .action-btn {
+    padding: 0.75rem;
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+  
+  .portfolio {
+    padding: 0 1rem;
+  }
+  
+  .portfolio-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    background: var(--surface);
+  }
+  
+  .account-type {
+    font-size: clamp(14px, 3.5vw, 16px);
+  }
+  
+  .footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    justify-content: center;
+    padding: 1rem;
+  }
+  
+  /* Responsive Breakpoints */
+  @media (min-width: 480px) {
+    .container {
+      max-width: 768px;
+      padding: 1.5rem;
+    }
+    
+    .tabs {
+      gap: 1rem;
+    }
+    
+    .portfolio-item {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .container {
+      max-width: 1024px;
+      padding: 2rem;
+    }
+    
+    .actions {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .footer {
+      justify-content: space-between;
+    }
+  }
+  
+  /* Hover States */
+  .tab:hover {
+    background: rgba(0,0,0,0.03);
+  }
+  
+  .action-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+  
+  .portfolio-item:hover {
+    border-color: var(--border);
+    transform: translateY(-2px);
+  }
+  
+  .footer-link:hover {
+    color: var(--primary);
+  }
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 479px) {
+    .total-assets {
+      margin: 1rem 0;
+    }
+    
+    .amount-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    .portfolio-item {
+      padding: 0.75rem;
+    }
+    
+    .footer-link {
+      font-size: 13px;
+    }
+  }
