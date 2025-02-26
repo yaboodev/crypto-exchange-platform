@@ -90,15 +90,15 @@ const Navbar: React.FC = () => {
           <li>
             <NavbarButton url='/wallet' icon='account_balance_wallet' title='My Wallet' />
           </li>
-          <li>
+          {/* <li>
             <NavbarButton url='/transactions' icon='sync' title='Transaction' />
-          </li>
+          </li> */}
           <li>
             <NavbarButton url='/trade' icon='paid' title='Trade' />
           </li>
-          <li>
+          {/* <li>
             <NavbarButton url='/exchange' icon='account_balance' title='Trail' />
-          </li>
+          </li> */}
           <li>
             <NavbarButton url='/capital' icon='equalizer' title='Market' />
           </li>

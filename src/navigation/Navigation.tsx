@@ -10,10 +10,12 @@ import DashboardScreen from '../screens/Dashboard/DashboardScreen';
 import TransactionsScreen from '../screens/Transactions/TransactionsScreen';
 import TradeScreen from '../screens/Trade/TradeScreen';
 import WalletScreen from '../screens/Wallet/WalletScreen';
+import Trade from '../screens/Trade/Trade';
 
 const Navigation: React.FC = () => (
   <Routes>
     <Route path='/' element={<SigninScreen />} />
+    <Route path='/trades/:coinId' element={<Trade />} />
     <Route path='/trade' element={<TradeScreen />} />
     <Route path='/wallet' element={<WalletScreen />} />
     <Route path='/market' element={<MarketScreen />} />

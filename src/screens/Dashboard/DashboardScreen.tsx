@@ -1,31 +1,72 @@
-// components
-// import React, { useState } from 'react'; // Add useState
+import React, { useState } from 'react'; // Add useState
 import Box from '../../components/Common/Box';
 import SiteLayout from '../../layouts/SiteLayout';
 import Header from '../../components/Header/Header';
 import BankProcess from '../../components/Widgets/BankProcess/BankProcess';
 import RecentActivity from '../../components/Widgets/RecentActivity/RecentActivity';
 
-const DashboardScreen: React.FC = () => {
-  // State for toggling the mobile menu
-  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  // // Function to handle menu toggle
-  // const handleMenuToggle = () => {
-  //   setIsMenuOpen(!isMenuOpen);
-  // };
+const DashboardScreen: React.FC = () => {
+  // State for file upload and messages
+  const [file, setFile] = useState<File | null>(null);
+  const [message, setMessage] = useState('');
+
+  // Handle file selection
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setFile(event.target.files[0]);
+    }
+  };
+
+  // Handle confirmation button click
+  const handleConfirmClick = () => {
+    if (!file) {
+      alert('Please upload a file before confirming.');
+      return;
+    }
+    setMessage('File uploaded successfully.');
+  };
 
   return (
     <SiteLayout>
       {/* Pass the toggle handler to Header */}
+      <Header icon="sort" title="Deposit and Withdraw" />
 
-      {/* Render the mobile menu conditionally */}
-      <Header icon='sort' title='Deposit and withdraw' />
-      <div className='flex flex-destroy flex-space-between'>
-        <div className='flex-1 box-right-padding'>
+      <div className="flex flex-destroy flex-space-between">
+        <div className="flex-1 box-right-padding">
           <BankProcess />
         </div>
-        <div className='flex-1'>
+        
+      </div>
+      <Box>
+
+        <div>
+          
+        <div className="flex flex-destroy flex-space-between">
+        <div className="flex-1 box-right-padding">
+          <label>Upload certificate</label>
+          <input type="file" id="file-input" onChange={handleFileChange} />
+        </div>
+
+        <p className="additional-info">
+          Important hint: Ensure safety and security in your transactions.
+        </p>
+
+        <button className="button" onClick={handleConfirmClick}>Confirm</button>
+
+        {message && <p className="message">{message}</p>}
+        </div>
+        
+      </div>
+        </Box>
+      
+
+      {/* Uncommented Sections */}
+      {/* <div className='flex flex-destroy flex-space-between'> */}
+        {/* <div className='flex-1 box-right-padding'>
+          <RecentActivity />
+        </div> */}
+        {/* <div className='flex-1'>
           <Box>
             <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
               <div className='flex flex-center flex-space-between'>
@@ -56,13 +97,14 @@ const DashboardScreen: React.FC = () => {
               </p>
             </div>
           </Box>
-        </div>
-      </div>
-      <div className='flex flex-destroy flex-space-between'>
-        <div className='flex-1 box-right-padding'>
+        </div> */}
+      {/* </div> */}
+
+      {/* <div className='flex flex-destroy flex-space-between'> */}
+        {/* <div className='flex-1 box-right-padding'>
           <RecentActivity />
-        </div>
-        <div className='flex-1'>
+        </div> */}
+        {/* <div className='flex-1'>
           <Box>
             <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
               <div className='flex flex-center flex-space-between'>
@@ -91,7 +133,7 @@ const DashboardScreen: React.FC = () => {
             </div>
           </Box>
         </div>
-      </div>
+      </div> */}
     </SiteLayout>
   );
 };

@@ -142,12 +142,12 @@ const MyAssets: React.FC = () => {
     <Box>
       <div className='box-title box-vertical-padding box-horizontal-padding no-select'>
         <div className='flex flex-center flex-space-between'>
-          <p>Kripto değerlerim</p>
+          <p>My crypto values</p>
           <div ref={ref}>
-            <Link to='/' type='button' className='button button-purple button-small'>
-              Kripto al
+            <Link to='#' type='button' className='button button-purple button-small'>
+            Crypto to
             </Link>
-            <button type='button' className='box-icon pointer' onClick={() => handleMenuOpen()}>
+            <button type='button' className='box-icon pointer' onClick={(e) => e.preventDefault()} >   
               <i className='material-icons'>more_vert</i>
             </button>
 

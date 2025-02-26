@@ -90,19 +90,19 @@ const MarketScreen: React.FC = () => {
                 <CandleStick />
               </div>
               <div className='content-30'>
-                <BuySell />
+                {/* <BuySell /> */}
               </div>
             </div>
 
             <div className='flex flex-destroy flex-space-between'>
               <div className='flex-1 box-right-padding'>
-                <TradeHistory />
+                {/* <TradeHistory /> */}
               </div>
               <div className='flex-1 box-right-padding'>
-                <BuyOrders />
+                {/* <BuyOrders /> */}
               </div>
               <div className='flex-1'>
-                <SellOrders />
+                {/* <SellOrders /> */}
               </div>
             </div>
           </div>

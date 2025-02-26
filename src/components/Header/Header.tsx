@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar';
 interface IProps {
   icon?: string;
   title: string;
+  onBack?: () => void; // ✅ Make sure this exists
 }
 
 const Header: React.FC<IProps> = ({ icon, title }) => {

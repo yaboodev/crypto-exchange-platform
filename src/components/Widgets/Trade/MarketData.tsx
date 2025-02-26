@@ -11,10 +11,11 @@ interface ICryptoData {
 
 interface IProps {
   item: ICryptoData;
+  handleClick: () => void;  // Added the handleClick prop
 }
 
-const MarketData: React.FC<IProps> = ({ item }) => (
-  <tr>
+const MarketData: React.FC<IProps> = ({ item, handleClick }) => (
+  <tr onClick={handleClick}>  {/* Added onClick to handle the click */}
     <td className='center'>
       <div className='icon cover' style={{ backgroundImage: `url('${item.image}')` }} />
       <strong>{item.name}</strong>

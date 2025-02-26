@@ -4,7 +4,7 @@ import SiteLayout from '../../layouts/SiteLayout';
 import Header from '../../components/Header/Header';
 import MarketData from '../../components/Widgets/Trade/MarketData';
 
-interface ICryptoData {
+export interface ICryptoData {
   id: string;
   name: string;
   symbol: string;
@@ -19,6 +19,11 @@ const TradeScreen: React.FC = () => {
   const [data, setData] = useState<ICryptoData[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handleClick = (id: string) => {
+    console.log(`Clicked on ${id}`);
+    // Add navigation or modal logic here
+  };
 
   useEffect(() => {
     const fetchCryptoData = async () => {
@@ -63,8 +68,8 @@ const TradeScreen: React.FC = () => {
             </tr>
           </thead>
           <tbody>
-            {data.map((item) => (
-              <MarketData key={item.id} item={item} />
+           {data.map((item) => (
+              <MarketData key={item.id} item={item} handleClick={() => handleClick(item.id)} />
             ))}
           </tbody>
         </table>

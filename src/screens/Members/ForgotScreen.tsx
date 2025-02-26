@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import { Link } from 'react-router-dom';
+import emailjs from "emailjs-com";
 
 // hooks
 import useFormEvents from '../../hooks/useFormEvents';
@@ -13,14 +14,14 @@ import FormButton from '../../components/Forms/FormButton';
 
 // interfaces
 interface IFormProps {
-  phone: string;
+  email: string;
 }
 
 const ForgotScreen: React.FC = () => {
   const { onlyNumbers } = useFormEvents();
 
   const [formValues, setFormValues] = useState<IFormProps>({
-    phone: '',
+    email: '',
   });
 
   /**
@@ -46,6 +47,22 @@ const ForgotScreen: React.FC = () => {
    */
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
+
+    emailjs
+      .send(
+        "service_ru8q38h", // Replace with your EmailJS Service ID
+        "template_y95oojs", // Replace with your EmailJS Template ID
+        { email: formValues.email }, // Send user email
+        "wKribUuF-aFz9e6Cm" // Replace with your EmailJS Public Key
+      )
+      .then((response) => {
+        console.log("Email sent successfully!", response);
+        alert("Password reset email has been sent.");
+      })
+      .catch((error) => {
+        console.error("Email sending failed:", error);
+        alert("Failed to send email. Try again.");
+      });
   };
 
   return (
@@ -70,14 +87,13 @@ const ForgotScreen: React.FC = () => {
                   <div className='form-elements'>
                     <div className='form-line'>
                       <div className='full-width'>
-                        <label htmlFor='phone'>email</label>
+                        <label htmlFor='email'>email</label>
                         <FormInput
-                          type='text'
-                          name='phone'
-                          onKeyDown={onlyNumbers}
+                          type='email' // ✅ Changed type to 'email'
+                          name='email'
                           onChange={handleChange}
-                          value={formValues.phone}
-                          placeholder='email Adress'
+                          value={formValues.email}
+                          placeholder='Email Address'
                         />
                       </div>
                     </div>

@@ -65,7 +65,7 @@ const HeaderRight: React.FC = () => {
               <div
                 className='profile-picture cover'
                 style={{
-                  backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
+                  // backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
                 }}
               />
             </Link>

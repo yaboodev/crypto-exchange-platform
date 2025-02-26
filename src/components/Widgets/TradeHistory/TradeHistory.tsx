@@ -152,10 +152,10 @@ const TradeHistory: React.FC = () => {
             <table>
               <thead>
                 <tr>
-                  <th className='left no-select'>Fiyat</th>
-                  <th className='center no-select'>Hacim</th>
-                  <th className='center no-select'>İşlem</th>
-                  <th className='right no-select'>Zaman</th>
+                  <th className='left no-select'>Price</th>
+                  <th className='center no-select'>Volume</th>
+                  <th className='center no-select'>Process</th>
+                  <th className='right no-select'>Time</th>
                 </tr>
               </thead>
               <tbody>

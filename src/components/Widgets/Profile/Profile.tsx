@@ -37,19 +37,19 @@ const Profile: React.FC = () => {
                 <li>
                   <button type='button'>
                     <i className='material-icons'>settings</i>
-                    Button 1
+                    
                   </button>
                 </li>
                 <li>
                   <button type='button'>
                     <i className='material-icons'>favorite</i>
-                    Button 2
+                    
                   </button>
                 </li>
                 <li>
                   <button type='button'>
                     <i className='material-icons'>info</i>
-                    Button 3
+
                   </button>
                 </li>
               </ul>
@@ -60,26 +60,26 @@ const Profile: React.FC = () => {
       <div className='widget-profile box-content box-content-height-nobutton'>
         <div className='center'>
           <form className='upload no-select' noValidate>
-            <input type='file' name='file' id='file' accept='.jpg, .jpeg' />
+            <input type='file' name='file' id='file' accept='.jpg, .jpeg,' />
             <label htmlFor='file'>
               <div
                 className='icon cover pointer'
                 style={{
-                  backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
+                  // backgroundImage: `url('https://www.cenksari.com/content/profile.jpg')`,
                 }}
               />
-              <div className='edit pointer'>
+              {/* <div className='edit pointer'>
                 <i className='material-icons'>edit</i>
-              </div>
+              </div> */}
             </label>
           </form>
         </div>
         <div className='box-horizontal-padding'>
           <div className='center'>
             <h3>User</h3>
-            <strong>Seviye 1</strong>
-            <p>Limitlerinizi arttırmak için seviye 2 olmalısınız.</p>
-            <Link to='/members/application'>Seviye 2 başvuru</Link>
+            <strong>Level 1</strong>
+            <p>You must be level 2 to increase your limit</p>
+            {/* <Link to='/members/application'>Seviye 2 başvuru</Link> */}
           </div>
         </div>
       </div>

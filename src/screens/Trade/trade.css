@@ -1,0 +1,173 @@
+/* Base styles */
+.trade-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: #f8fafc;
+    min-height: 100vh;
+  }
+  
+  /* Coin Header */
+  .coin-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .coin-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+  }
+  
+  /* Position Toggle */
+  .position-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  
+  .toggle-btn {
+    padding: 1rem;
+    border: none;
+    border-radius: 0.75rem;
+    background: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .toggle-btn.active {
+    background: linear-gradient(135deg, #4f46e5, #6366f1);
+    color: white;
+    box-shadow: 0 4px 6px rgba(79,70,229,0.1);
+  }
+  
+  /* Form Elements */
+  .trade-form {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #475569;
+  }
+  
+  .form-group input,
+  .delivery-select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    transition: border-color 0.2s ease;
+  }
+  
+  .form-group input:focus,
+  .delivery-select:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 2px rgba(99,102,241,0.1);
+  }
+  
+  /* Buttons */
+  .entrust-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #10b981, #059669);
+    color: white;
+    border: none;
+    border-radius: 0.75rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+  
+  .entrust-btn:hover {
+    transform: translateY(-1px);
+  }
+  
+  /* Contract Card */
+  .contract-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .countdown {
+    font-family: monospace;
+    font-size: 1.5rem;
+    color: #ef4444;
+    text-align: center;
+    margin-top: 1rem;
+  }
+  
+  /* Ticket Section */
+  .ticket-section {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  }
+  
+  .ticket-section input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .validate-btn {
+    width: 100%;
+    padding: 0.75rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+  }
+  
+  /* Result Messages */
+  .result {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .result.success {
+    background: #dcfce7;
+    color: #166534;
+  }
+  
+  .result.error {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  .report-card{
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    margin: 2rem 0;
+    font-size: 1.1rem;
+  }
+  .report-details{
+    margin: 1 1 1 1;
+  }

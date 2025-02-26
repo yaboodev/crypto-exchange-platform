@@ -1,6 +1,5 @@
 import { useState } from 'react';
-
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 // hooks
 import useFormEvents from '../../hooks/useFormEvents';
@@ -35,6 +34,7 @@ interface IFormProps {
 
 const SignupScreen: React.FC = () => {
   const { onlyNumbers, onlyEmail } = useFormEvents();
+  const navigate = useNavigate(); // Initialize navigate here
 
   const [formValues, setFormValues] = useState<IFormProps>({
     email: '',
@@ -56,12 +56,24 @@ const SignupScreen: React.FC = () => {
     agreeToPolicies3: false,
   });
 
-  /**
-   * Handles input changes in the sign-up form.
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} e - The input change event.
-   * @returns {void}
-   */
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Validate the form
+  const validateForm = () => {
+    const newErrors: Record<string, string> = {};
+    if (!formValues.email) newErrors.email = 'Email is required';
+    if (!formValues.password) newErrors.password = 'Password is required';
+    if (formValues.password !== formValues.password1)
+      newErrors.password1 = 'Passwords do not match';
+    if (!formValues.name) newErrors.name = 'Name is required';
+    if (!formValues.lastname) newErrors.lastname = 'Last name is required';
+    if (!formValues.phone) newErrors.phone = 'Phone number is required';
+    if (!formValues.agreeToPolicies1)
+      newErrors.agreeToPolicies1 = 'You must agree to the first policy';
+
+    return newErrors;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
 
@@ -71,12 +83,6 @@ const SignupScreen: React.FC = () => {
     });
   };
 
-  /**
-   * Handles checkbox changes in the sign-up form.
-   *
-   * @param {React.ChangeEvent<HTMLInputElement>} e - The checkbox change event.
-   * @returns {void}
-   */
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, checked } = e.target;
 
@@ -86,15 +92,112 @@ const SignupScreen: React.FC = () => {
     });
   };
 
-  /**
-   * Handles the form submission for the sign-up screen.
-   *
-   * @param {React.FormEvent} e - The form submission event.
-   * @returns {void}
-   */
-  const handleSubmit = (e: React.FormEvent): void => {
-    e.preventDefault();
-  };
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); // Prevent page reload
+
+    const validationErrors: Record<string, string> = {};
+
+    // Email validation
+    if (!formValues.email.trim()) {
+        validationErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formValues.email)) {
+        validationErrors.email = "Enter a valid email address";
+    }
+
+    // Password validation
+    // if (!formValues.password.trim()) {
+    //     validationErrors.password = "Password is required";
+    // } else if (formValues.password.length < 8) {
+    //     validationErrors.password = "Password must be at least 8 characters long";
+    // } else if (!/[A-Z]/.test(formValues.password) || !/[0-9]/.test(formValues.password)) {
+    //     validationErrors.password = "Password must contain at least one uppercase letter and one number";
+    // }
+
+    // Confirm password validation
+    if (!formValues.password1.trim()) {
+        validationErrors.password1 = "Confirm Password is required";
+    } else if (formValues.password !== formValues.password1) {
+        validationErrors.password1 = "Passwords do not match";
+    }
+
+    // Name validation
+    if (!formValues.name.trim()) {
+        validationErrors.name = "Name is required";
+    } else if (formValues.name.length < 2) {
+        validationErrors.name = "Name must be at least 2 characters long";
+    }
+
+    // Last name validation
+    if (!formValues.lastname.trim()) {
+        validationErrors.lastname = "Last name is required";
+    } else if (formValues.lastname.length < 2) {
+        validationErrors.lastname = "Last name must be at least 2 characters long";
+    }
+
+
+
+    // Policy agreement validation
+    if (!formValues.agreeToPolicies1) {
+        validationErrors.agreeToPolicies1 = "You must agree to the terms and conditions";
+    }
+
+    // If there are errors, update state and stop submission
+    if (Object.keys(validationErrors).length > 0) {
+        setErrors(validationErrors);
+        return;
+    }
+
+    // Clear errors if all validations pass
+    setErrors({});
+
+    // Prepare data for API
+    const formData = {
+        email: formValues.email,
+        password: formValues.password,
+        name: formValues.name,
+        lastname: formValues.lastname,
+        phone: formValues.phone,
+    };
+
+    try {
+        const response = await fetch("https://etoure.com/signup.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+        });
+
+        const result = await response.json();
+        console.log("API Response:", result);
+
+        if (result.status === "success") {
+            alert("Signup successful!");
+
+             // Debug navigate function
+        console.log("navigate function:", navigate);
+        if (typeof navigate !== "function") {
+            console.error("navigate is not a function!");
+            return; // Stop execution if navigate is undefined
+        }
+        
+            console.log("Navigating to /market...");
+            window.location.replace("/market"); // Try force reload
+
+        setTimeout(() => {
+            navigate("/market"); // Try navigating with React Router
+        }, 500); 
+            
+        } else {
+            alert(result.message);
+        }
+    } catch (error) {
+        alert("An error occurred. Please try again.");
+    }
+};
+
+
+
 
   return (
     <MainLayout>
@@ -134,6 +237,7 @@ const SignupScreen: React.FC = () => {
                           value={formValues.email}
                           placeholder='Your email address'
                         />
+                        {errors.email && <p className='error'>{errors.email}</p>}
                       </div>
                     </div>
                     <div className='form-line'>
@@ -146,6 +250,7 @@ const SignupScreen: React.FC = () => {
                           value={formValues.password}
                           placeholder='Your password'
                         />
+                        {errors.password && <p className='error'>{errors.password}</p>}
                       </div>
                     </div>
                     <div className='form-line'>
@@ -158,6 +263,7 @@ const SignupScreen: React.FC = () => {
                           value={formValues.password1}
                           placeholder='Confirm Password'
                         />
+                        {errors.password1 && <p className='error'>{errors.password1}</p>}
                       </div>
                     </div>
                     <div className='form-line'>
@@ -170,6 +276,7 @@ const SignupScreen: React.FC = () => {
                           value={formValues.name}
                           placeholder='Your name'
                         />
+                        {errors.name && <p className='error'>{errors.name}</p>}
                       </div>
                     </div>
                     <div className='form-line'>
@@ -182,76 +289,13 @@ const SignupScreen: React.FC = () => {
                           value={formValues.lastname}
                           placeholder='Last Name'
                         />
-                      </div>
-                    </div>
-
-                    <div className='form-line'>
-                      <div className='full-width'>
-                        <FormCheckbox
-                          name='citizenship'
-                          onChange={handleCheckboxChange}
-                          checked={formValues.citizenship}
-                          text='Citizen'
-                        />
-                      </div>
-                    </div>
-
-                    <div className='form-line clearfix'>
-                      <div className='half-width'>
-                        <label htmlFor='identityType'>Identity Type</label>
-                        <select name='identityType' id='identityType'>
-                          <option value='1'>TR ID number/Passport</option>
-                        </select>
-                      </div>
-                      <div className='half-width'>
-                        <label htmlFor='identityNumber'>Id Number</label>
-                        <FormInput
-                          type='text'
-                          name='identityNumber'
-                          onKeyDown={onlyNumbers}
-                          onChange={handleChange}
-                          value={formValues.identityNumber}
-                          placeholder='Id Number'
-                        />
+                        {errors.lastname && <p className='error'>{errors.lastname}</p>}
                       </div>
                     </div>
 
                     <div className='form-line clearfix'>
                       <div className='three-width'>
-                        <label htmlFor='day'>Date of birth</label>
-                        <select name='day' id='day'>
-                          <option value='1'>Day</option>
-                        </select>
-                      </div>
-                      <div className='three-width'>
-                        <label htmlFor='month'>&nbsp;</label>
-                        <select name='month' id='month'>
-                          <option value='1'>Month</option>
-                        </select>
-                      </div>
-                      <div className='three-width'>
-                        <label htmlFor='year'>&nbsp;</label>
-                        <select name='year' id='year'>
-                          <option value='1'>Year</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className='form-line clearfix'>
-                      <div className='three-width'>
-                        <label htmlFor='country'>Telefon</label>
-                        <select name='country' id='country'>
-                          <option value='1'>Country code</option>
-                        </select>
-                      </div>
-                      <div className='three-width'>
-                        <label htmlFor='operator'>&nbsp;</label>
-                        <select name='operator' id='operator'>
-                          <option value='1'>Operator code(optional)</option>
-                        </select>
-                      </div>
-                      <div className='three-width'>
-                        <label htmlFor='phone'>&nbsp;</label>
+                        <label htmlFor='phone'>Phone</label>
                         <FormInput
                           type='text'
                           name='phone'
@@ -260,6 +304,7 @@ const SignupScreen: React.FC = () => {
                           value={formValues.phone}
                           placeholder='Enter your phone number'
                         />
+                        {errors.phone && <p className='error'>{errors.phone}</p>}
                       </div>
                     </div>
 
@@ -271,32 +316,19 @@ const SignupScreen: React.FC = () => {
                           checked={formValues.agreeToPolicies1}
                           text={`I have read the KVKK Information Text and accept the user agreement.`}
                         />
+                        {errors.agreeToPolicies1 && (
+                          <p className='error'>{errors.agreeToPolicies1}</p>
+                        )}
                       </div>
                     </div>
+
                     <div className='form-line'>
-                      <div className='full-width'>
-                        <FormCheckbox
-                          name='agreeToPolicies2'
-                          onChange={handleCheckboxChange}
-                          checked={formValues.agreeToPolicies2}
-                          text={`I have read and reviewed the KVKK Explicit Consent Text. I approve the processing and transfer of my personal data within the scope of this text.`}
-                        />
-                      </div>
-                    </div>
                     <div className='form-line'>
-                      <div className='full-width'>
-                        <FormCheckbox
-                          name='agreeToPolicies3'
-                          onChange={handleCheckboxChange}
-                          checked={formValues.agreeToPolicies3}
-                          text='I agree to receive commercial electronic messages regarding products and services via e-mail, telephone and electronic communication channels within the scope of the KVVK Information Text.'
-                        />
-                      </div>
-                    </div>
-                    <div className='form-line'>
-                      <div className='buttons'>
-                        <FormButton type='submit' text='Create an account' onClick={handleSubmit} />
-                      </div>
+  <div className='buttons'>
+  <FormButton type="submit" text="Create an account" />
+  </div>
+  <button onClick={() => navigate("/market")}>Go to Market</button>
+</div>
                     </div>
                     <div className='form-line'>
                       <div className='center'>

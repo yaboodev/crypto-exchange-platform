@@ -2,8 +2,9 @@
 interface IProps {
   type: string;
   text: string;
-  onClick: (e: React.FormEvent) => void;
+  onClick?: (e: React.FormEvent) => void;  // Allow event parameter
 }
+
 
 const FormButton: React.FC<IProps> = ({ type, text, onClick }) => (
   <button
